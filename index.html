@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neng — Ruang Cinta & Remaja</title>
+  <meta name="description" content="Neng: ruang hangat buat cerita cinta, remaja, dan hal-hal umum yang bikin hidup berwarna.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f0f12;
+      --card:#15161b;
+      --accent:#ff4d6d;
+      --accent-2:#5ee7df;
+      --text:#eef2ff;
+      --muted:#b7c0d6;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:radial-gradient(1200px 600px at 10% -10%, rgba(255,77,109,.15), transparent), var(--bg); color:var(--text); font-family: Poppins, Nunito, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+    a{color:var(--accent);text-decoration:none}
+    header{
+      position:sticky; top:0; z-index:10; backdrop-filter:saturate(140%) blur(8px);
+      background:linear-gradient(180deg, rgba(21,22,27,.85), rgba(21,22,27,.6));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      max-width:1000px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:14px 18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.5px;
+    }
+    .brand .logo{
+      width:34px; height:34px; border-radius:9px;
+      background: conic-gradient(from 210deg, var(--accent), #ffa8b8, var(--accent-2), #8a63ff, var(--accent));
+      box-shadow: var(--shadow);
+      transform: rotate(4deg);
+    }
+    .menu{display:flex; gap:18px; font-weight:600}
+    .menu a{padding:8px 12px; border-radius:10px}
+    .menu a:hover{background:rgba(255,255,255,.06)}
+    .cta{
+      padding:10px 14px; border-radius:12px; background:linear-gradient(90deg, var(--accent), #ffa8b8); color:#0f0f12; font-weight:800;
+      box-shadow: var(--shadow); transform: translateY(0); transition: .2s ease;
+    }
+    .cta:hover{transform: translateY(-2px)}
+    .hero{
+      max-width:1000px; margin:0 auto; padding:40px 18px 24px;
+      display:grid; grid-template-columns: 1.15fr .85fr; gap:22px;
+    }
+    .hero-card{
+      background:linear-gradient(180deg, rgba(94,231,223,.12), rgba(21,22,27,.8));
+      border:1px solid rgba(94,231,223,.25);
+      border-radius:18px; padding:24px; box-shadow: var(--shadow);
+    }
+    .hero h1{font-size: clamp(28px, 5.8vw, 48px); margin:0 0 10px; line-height:1.1}
+    .hero p{color:var(--muted); font-size:16px; line-height:1.7}
+    .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .chip{
+      padding:8px 12px; border-radius:999px; background:rgba(255,77,109,.14); border:1px solid rgba(255,77,109,.35); font-weight:600;
+    }
+    .hero-side{
+      display:grid; gap:12px;
+    }
+    .mini{
+      background:var(--card); border-radius:16px; padding:16px; border:1px solid rgba(255,255,255,.06);
+    }
+    .section{
+      max-width:1000px; margin:0 auto; padding:28px 18px;
+    }
+    .cards{display:grid; grid-template-columns: repeat( auto-fit, minmax(240px, 1fr) ); gap:16px}
+    .card{
+      background:var(--card); border-radius:16px; padding:18px; border:1px solid rgba(255,255,255,.06);
+      transition:.2s ease; position:relative; overflow:hidden;
+    }
+    .card:hover{transform: translateY(-3px); border-color: rgba(255,77,109,.35)}
+    .badge{
+      position:absolute; top:14px; right:14px; font-size:12px; padding:6px 10px; border-radius:999px;
+      background:rgba(255,77,109,.14); border:1px solid rgba(255,77,109,.35); font-weight:700;
+    }
+    .card h3{margin:8px 0 6px}
+    .card p{color:var(--muted); font-size:15px; line-height:1.7}
+    .footer{
+      border-top:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg, rgba(21,22,27,.6), rgba(21,22,27,.9));
+    }
+    .subscribe{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;
+    }
+    input[type="email"]{
+      flex:1; min-width:220px; background:#0f1014; color:var(--text); border:1px solid rgba(255,255,255,.12);
+      padding:12px 14px; border-radius:12px; outline:none;
+    }
+    button{
+      padding:12px 16px; border:none; border-radius:12px; font-weight:800; cursor:pointer;
+      background:linear-gradient(90deg, var(--accent-2), #8a63ff); color:#0f0f12; box-shadow: var(--shadow);
+    }
+    @media (max-width: 840px){
+      .hero{grid-template-columns: 1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Neng</span>
+      </div>
+      <div class="menu" aria-label="Navigasi utama">
+        <a href="#topik">Topik</a>
+        <a href="#artikel">Artikel</a>
+        <a href="#kisah">Kisah</a>
+        <a class="cta" href="#gabung">Gabung</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Neng: ruang cinta, remaja, dan hal-hal umum yang bikin hidup berwarna</h1>
+        <p>
+          Selamat datang di Neng, tempat ramah dan mobile-friendly buat kamu yang lagi cari cerita, saran, dan obrolan
+          hangat tentang cinta, kehidupan remaja, serta hal-hal umum yang sering muncul di kepala menjelang malam.
+          Di sini, kamu bebas jadi diri sendiri: curhat tipis-tipis, belajar memahami hati, dan menemukan sudut pandang
+          baru yang lebih jujur, ringan, tapi tetap relevan. Kami merayakan momen kecil, rasa yang campur aduk,
+          dan keberanian untuk tumbuh pelan-pelan tanpa perlu pura-pura kuat.
+        </p>
+        <div class="chips" id="topik">
+          <span class="chip">Cinta</span>
+          <span class="chip">Remaja</span>
+          <span class="chip">Pertemanan</span>
+          <span class="chip">Keseharian</span>
+          <span class="chip">Self-growth</span>
+          <span class="chip">Sekolah & Kampus</span>
+        </div>
+      </div>
+      <div class="hero-side">
+        <div class="mini">
+          <strong>Agenda minggu ini</strong>
+          <p>
+            Dari first crush sampai move on elegan, kita bakal bahas cara jujur sama diri sendiri, nyusun batas sehat,
+            dan merawat hubungan biar nggak capek sendirian. Neng hadir sebagai teman yang nggak nge-judge, cuma ngasih
+            ruang aman buat cerita tumbuh bareng.
+          </p>
+        </div>
+        <div class="mini">
+          <strong>Janji Neng</strong>
+          <p>
+            Neng itu sederhana: dekat, hangat, dan selalu relevan. Konten dikemas ringkas, enak di-scroll, dan tetap
+            bermakna. Kamu baca pelan, tapi pulang dengan sudut pandang baru—lebih dewasa, lebih peka, dan lebih kamu.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="artikel">
+      <h2>Pilihan editor</h2>
+      <div class="cards">
+        <article class="card">
+          <span class="badge">Cinta</span>
+          <h3>Ngobrol batasan, bukan drama</h3>
+          <p>
+            Batasan itu bukan tembok, tapi jendela yang bikin udara tetap masuk. Kita belajar bilang “ini aku”
+            tanpa takut kehilangan, dan memahami bahwa sayang itu juga seni menjaga diri.
+          </p>
+          <a href="#">Baca sekarang</a>
+        </article>
+        <article class="card">
+          <span class="badge">Remaja</span>
+          <h3>Teman yang pelan tapi pasti</h3>
+          <p>
+            Nggak semua hal harus viral. Ada pertemanan yang tumbuh diam-diam, stabil, dan bisa jadi jangkar saat
+            pikiran ke mana-mana. Kita rayakan ritme yang manusiawi.
+          </p>
+          <a href="#">Baca sekarang</a>
+        </article>
+        <article class="card">
+          <span class="badge">Umum</span>
+          <h3>Belajar istirahat yang benar</h3>
+          <p>
+            Istirahat bukan malas. Ia strategi supaya besok kamu masih punya tenaga untuk jadi versi yang kamu suka.
+            Kita bahas teknik kecil yang efeknya besar.
+          </p>
+          <a href="#">Baca sekarang</a>
+        </article>
+        <article class="card">
+          <span class="badge">Kisah</span>
+          <h3>Surat yang nggak pernah kukirim</h3>
+          <p>
+            Ada kata-kata yang ingin tinggal di dada. Kita belajar merelakan, bukan menghapus. Karena kadang,
+            yang penting adalah cara kamu menyimpan dan merawat memori.
+          </p>
+          <a href="#">Baca sekarang</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="kisah">
+      <h2>Kisah singkat malam ini</h2>
+      <p>
+        Malam turun pelan. Lampu kamar redup, playlist favorit muter tipis. Kamu membuka jendela, lalu membiarkan
+        angin membawa sisa-sisa hari yang berat. Di Neng, kita belajar menerima rasa yang datang tanpa diundang,
+        dan meletakkannya perlahan di meja, menatapnya, lalu berkata: terima kasih sudah mampir. Besok kita coba lagi,
+        masih dengan hati yang sama, tapi langkah yang lebih ringan.
+      </p>
+    </section>
+
+    <section class="section" id="gabung" aria-label="Form gabung">
+      <h2>Gabung newsletter Neng</h2>
+      <p>
+        Dapatkan tulisan baru, catatan kecil, dan rekomendasi hangat setiap minggu. Satu email, buat kamu yang ingin
+        tumbuh tanpa bising.
+      </p>
+      <form class="subscribe">
+        <input type="email" placeholder="Email kamu" aria-label="Email" required />
+        <button type="submit">Gabung sekarang</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="section" style="display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap">
+      <div>
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <span>Neng</span>
+        </div>
+        <p style="color:var(--muted); max-width:520px; margin-top:10px">
+          Neng adalah ruang aman untuk cinta, remaja, dan hal-hal umum yang sering kita pikirkan.
+          Mobile-friendly, sederhana, dan jujur—biar kamu bisa pulang dengan hati yang lebih tenang.
+        </p>
+      </div>
+      <div>
+        <strong>Ikuti Neng</strong>
+        <p><a href="#">Instagram</a> · <a href="#">TikTok</a> · <a href="#">YouTube</a></p>
+      </div>
+    </div>
+    <div class="section" style="padding-top:0">
+      <small style="color:var(--muted)">© 2025 Neng. Semua hak dilindungi. Dibuat dengan niat baik dan rasa penasaran.</small>
+    </div>
+  </footer>
+</body>
+</html>
+```
